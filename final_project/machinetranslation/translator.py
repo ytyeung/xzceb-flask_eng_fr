@@ -1,8 +1,13 @@
-import json
+"""
+This module provides en-fr / fr-en translation with IBM Watson Translation
+"""
+
+#import json
+import os
 from ibm_watson import LanguageTranslatorV3
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
-import os
 from dotenv import load_dotenv
+
 
 load_dotenv()
 
@@ -21,27 +26,36 @@ language_translator = LanguageTranslatorV3(
 language_translator.set_service_url(url)
 
 
-def englishToFrench(englishText):
+def englishToFrench(english_text):
     """
     Translate English to French
     """
+
+    # return nothing when empty
+    if english_text in ('',None):
+        return None
+
     translation = language_translator.translate(
-        text=englishText,
+        text=english_text,
         source='en',
         model_id='en-fr').get_result()
 
-    frenchText=translation['translations'][0]['translation']
+    french_text=translation['translations'][0]['translation']
 
-    return frenchText
+    return french_text
 
-def frenchToEnglish(frenchText):
+def frenchToEnglish(french_text):
     """
     Translate French to English
     """
+    # return nothing when empty
+    if french_text in ('',None):
+        return None
+
     translation = language_translator.translate(
-    text=frenchText,
+    text=french_text,
     source='fr',
     model_id='fr-en').get_result()
 
-    englishText=translation['translations'][0]['translation']
-    return englishText
+    english_text=translation['translations'][0]['translation']
+    return english_text

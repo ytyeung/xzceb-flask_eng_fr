@@ -11,9 +11,9 @@ class TestEnglishToFrench (unittest.TestCase):
     """
     def test_for_null(self):
         """
-        test for null '', return None when null
+        test for null '', should not return any string
         """
-        self.assertEqual(englishToFrench(''), None)
+        self.assertNotEqual(len(englishToFrench('')) > 0, True)
 
     def test_for_hello(self):
         """
@@ -27,9 +27,9 @@ class FrenchToEnglish(unittest.TestCase):
     """
     def test_for_null(self):
         """
-        Test for null '', return None when null
+        Test for null '', should not return any string
         """
-        self.assertEqual(frenchToEnglish(''), None)
+        self.assertNotEqual(len(frenchToEnglish('')) > 0, True)
     def test_for_bonjour(self):
         """
         Test for Bonjour

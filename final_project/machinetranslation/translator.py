@@ -33,7 +33,7 @@ def englishToFrench(english_text):
 
     # return nothing when empty
     if english_text in ('',None):
-        return None
+        return ''
 
     translation = language_translator.translate(
         text=english_text,
@@ -50,7 +50,7 @@ def frenchToEnglish(french_text):
     """
     # return nothing when empty
     if french_text in ('',None):
-        return None
+        return ''
 
     translation = language_translator.translate(
     text=french_text,
